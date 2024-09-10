@@ -1,6 +1,9 @@
 # Missile Command - Jacob Domingo
 
-import turtle, random, time, os  # winsound - windows
+import os  # winsound - windows
+import random
+import time
+import turtle
 
 mywindow = turtle.Screen()
 mywindow.setup(800, 800)
@@ -28,31 +31,31 @@ instruction_writer.write("against an endless hail of enemy missiles", align="cen
 instruction_writer.goto(-50, -60)
 instruction_writer.write("Cities", align="center", font=("Arial", 30, "normal"))
 instruction_writer.goto(-50, -110)
-cityStamp = "//Users//jacobdomingo//Desktop//Computer Programming//cityStamp.gif"
+cityStamp = "./cityStamp.gif"
 mywindow.addshape(cityStamp)
 instruction_writer.shape(cityStamp)
 instruction_writer.stamp()
 instruction_writer.goto(50, -60)
 instruction_writer.write("Silos", align="center", font=("Arial", 30, "normal"))
 instruction_writer.goto(50, -110)
-siloStamp = "//Users//jacobdomingo//Desktop//Computer Programming//siloStamp.gif"
+siloStamp = "./siloStamp.gif"
 mywindow.addshape(siloStamp)
 instruction_writer.shape(siloStamp)
 instruction_writer.stamp()
 instruction_writer.goto(0, -190)
 instruction_writer.write("Enemy Missiles", align="center", font=("Arial", 30, "normal"))
 instruction_writer.goto(-100, -235)
-enemyStamp = "//Users//jacobdomingo//Desktop//Computer Programming//enemyStamp.gif"
+enemyStamp = "./enemyStamp.gif"
 mywindow.addshape(enemyStamp)
 instruction_writer.shape(enemyStamp)
 instruction_writer.stamp()
 instruction_writer.goto(0, -235)
-invaderStamp = "//Users//jacobdomingo//Desktop//Computer Programming//invaderStamp.gif"
+invaderStamp = "./invaderStamp.gif"
 mywindow.addshape(invaderStamp)
 instruction_writer.shape(invaderStamp)
 instruction_writer.stamp()
 instruction_writer.goto(100, -235)
-sideStamp = "//Users//jacobdomingo//Desktop//Computer Programming//sideStamp.gif"
+sideStamp = "./sideStamp.gif"
 mywindow.addshape(sideStamp)
 instruction_writer.shape(sideStamp)
 instruction_writer.stamp()
@@ -154,7 +157,7 @@ def leave():  # Quit Button
 def calculate_time():  # Score Points
     global oldTime, newTime, elapsedTime
     oldTime = newTime
-    newTime = int(time.time())
+    newTime = int(time.perf_counter())
     timeDiff = newTime - oldTime
     if timeDiff == 1:
         elapsedTime += 1
@@ -578,13 +581,13 @@ mywindow.onscreenclick(click)
 
 FPS = 60  # 60 frames per second
 refreshInterval = 1 / FPS  # and so this is how long we wait before the next screen draw
-startOfInterval = time.time()
+startOfInterval = time.perf_counter()
 
 # -----------------------------------Setting Up Data Structures and Initial Conditions----------------------------------
 
 quitFlag = False
 
-newTime = int(time.time())
+newTime = int(time.perf_counter())
 elapsedTime = 0
 timer.write(newTime, font=("Arial", 16, "normal"))
 
@@ -635,7 +638,7 @@ for side_missile in side_storage:
 # ----------------------------------------------------Main Game---------------------------------------------------------
 
 while quitFlag == False:
-    endOfInterval = time.time()
+    endOfInterval = time.perf_counter()
     if endOfInterval - startOfInterval >= refreshInterval:
 
         # moving the player to the target
@@ -859,7 +862,7 @@ while quitFlag == False:
             mywindow.bye()
 
         mywindow.update()  # manually draw the screen
-        startOfInterval = time.time()
+        startOfInterval = time.perf_counter()
 
 mywindow.bye()
 
